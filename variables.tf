@@ -182,8 +182,9 @@ variable "use_fips_ssl" {
 
 variable "wlm_json_configuration" {
   description = "Configuration bits for WLM json. see https://docs.aws.amazon.com/redshift/latest/mgmt/workload-mgmt-config.html"
-  type        = string
-  default     = "[{\"query_concurrency\": 5}]"
+  default = {
+    query_concurrency : 5
+  }
 }
 
 variable "tags" {

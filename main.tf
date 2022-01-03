@@ -10,6 +10,8 @@ locals {
     var.parameter_group_name,
     element(concat(aws_redshift_parameter_group.this.*.id, [""]), 0),
   )
+
+  wlm_json_configuration = jsonencode(var.wlm_json_configuration)
 }
 
 resource "aws_redshift_cluster" "this" {
@@ -86,7 +88,7 @@ resource "aws_redshift_parameter_group" "this" {
 
   parameter {
     name  = "wlm_json_configuration"
-    value = var.wlm_json_configuration
+    value = local.wlm_json_configuration
   }
 
   parameter {

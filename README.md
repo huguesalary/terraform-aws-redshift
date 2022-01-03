@@ -18,7 +18,9 @@ module "redshift" {
   cluster_master_password = "mySecretPassw0rd"
 
   # Group parameters
-  wlm_json_configuration = "[{\"query_concurrency\": 5}]"
+  wlm_json_configuration = {
+    query_concurrency: 5
+  }
 
   # DB Subnet Group Inputs
   subnets = ["subnet-123456", "subnet-654321"]
@@ -100,7 +102,7 @@ No modules.
 | <a name="input_tags"></a> [tags](#input\_tags) | A mapping of tags to assign to all resources | `map(string)` | `{}` | no |
 | <a name="input_use_fips_ssl"></a> [use\_fips\_ssl](#input\_use\_fips\_ssl) | Enable FIPS-compliant SSL mode only if your system is required to be FIPS compliant. | `string` | `"false"` | no |
 | <a name="input_vpc_security_group_ids"></a> [vpc\_security\_group\_ids](#input\_vpc\_security\_group\_ids) | A list of Virtual Private Cloud (VPC) security groups to be associated with the cluster. | `list(string)` | n/a | yes |
-| <a name="input_wlm_json_configuration"></a> [wlm\_json\_configuration](#input\_wlm\_json\_configuration) | Configuration bits for WLM json. see https://docs.aws.amazon.com/redshift/latest/mgmt/workload-mgmt-config.html | `string` | `"[{\"query_concurrency\": 5}]"` | no |
+| <a name="input_wlm_json_configuration"></a> [wlm\_json\_configuration](#input\_wlm\_json\_configuration) | Configuration bits for WLM json. see https://docs.aws.amazon.com/redshift/latest/mgmt/workload-mgmt-config.html | `map` | `{ query_concurrency: 5 }` | no |
 
 ## Outputs
 
